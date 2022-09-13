@@ -1,12 +1,28 @@
-run="yarn run dev"
+run = "npm run dev"
+language = "kaboomdraw"
+entrypoint = "draw.js"
+hidden = [
+	".config",
+	"misc",
+	"vite.config.ts",
+	"index.html",
+	"main.ts",
+	"package.json",
+	"package-lock.json",
+]
+
+[nix]
+channel = "stable-21_11"
 
 [packager]
-language = "nodejs-yarn"
+language="nodejs"
+
 [packager.features]
 packageSearch = true
-guessImports = true
 
-[languages.js]
-pattern = "**/*.ts"
-[languages.js.languageServer]
-start = ["typescript-language-server", "--stdio"]
+[languages.javascript]
+pattern = "**/*.{js,ts}"
+syntax = "javascript"
+
+[languages.javascript.languageServer]
+start = [ "typescript-language-server", "--stdio" ]
